@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 import nmap
 
 def home(request):
@@ -7,7 +6,8 @@ def home(request):
 
 def scan_network(request):
     nm = nmap.PortScanner()
-    nm.scan(hosts='192.168.0.0/24', arguments='-sn')
+    network_param = request.GET.get('network', '192.168.0.0/24')
+    nm.scan(hosts=network_param, arguments='-sn')
 
     devices = []
     for host in nm.all_hosts():
@@ -17,4 +17,7 @@ def scan_network(request):
             'hostname': nm[host].hostname() or 'Sem nome'
         })
 
-    return JsonResponse({'devices': devices})
+    return render(request, 'scanner/result.html', {
+        'devices': devices,
+        'network_scanned': network_param
+    })

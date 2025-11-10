@@ -2,26 +2,27 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Resultados - WiFiFound</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'scanner/style.css' %}">
+    <title>Resultado da Varredura</title>
 </head>
-<body>
-    <h1>📡 Dispositivos Encontrados</h1>
+<body style="background-color:#0b1622;color:white;text-align:center;">
+    <h1>📡 Resultado da Varredura</h1>
+    <p>Rede escaneada: {{ network_scanned }}</p>
 
-    {% if hosts %}
-        <ul>
-            {% for host in hosts %}
-                <li>
-                    <span><strong>{{ host.ip }}</strong></span>
-                    <span>{{ host.status|capfirst }}</span>
-                </li>
+    {% if devices %}
+        <table border="1" style="margin:auto;color:white;">
+            <tr><th>IP</th><th>MAC</th><th>Hostname</th></tr>
+            {% for d in devices %}
+                <tr>
+                    <td>{{ d.ip }}</td>
+                    <td>{{ d.mac }}</td>
+                    <td>{{ d.hostname }}</td>
+                </tr>
             {% endfor %}
-        </ul>
+        </table>
     {% else %}
         <p>Nenhum dispositivo encontrado.</p>
     {% endif %}
 
-    <a href="/">← Voltar</a>
+    <a href="/" style="color:#28aef0;">Voltar</a>
 </body>
 </html>
