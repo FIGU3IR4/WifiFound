@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados - WiFiFound</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'scanner/style.css' %}">
+</head>
+<body>
+    <h1>📡 Dispositivos Encontrados</h1>
+
+    {% if hosts %}
+        <ul>
+            {% for host in hosts %}
+                <li>
+                    <span><strong>{{ host.ip }}</strong></span>
+                    <span>{{ host.status|capfirst }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum dispositivo encontrado.</p>
+    {% endif %}
+
+    <a href="/">← Voltar</a>
+</body>
+</html>

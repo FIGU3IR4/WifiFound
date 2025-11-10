@@ -1,0 +1,35 @@
+<!-- scanner/templates/scanner/home.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wi-Fi encontrado</title>
+  <link rel="stylesheet" href="{% static 'scanner/style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Wi-Fi encontrado</h1>
+    <p>Bem-vindo ao scanner de dispositivos conectados à rede.</p>
+
+    <div class="scan-card">
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="scan-btn">Iniciar Varredura</button>
+      </form>
+    </div>
+
+    {% if dispositivos %}
+      <div class="result-card">
+        <h2>Dispositivos Encontrados:</h2>
+        <ul>
+          {% for dispositivo in dispositivos %}
+            <li>{{ dispositivo }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

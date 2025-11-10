@@ -1,0 +1,66 @@
+body {
+  background: #0f172a;
+  color: #f1f5f9;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+h1 {
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.scan-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin-bottom: 40px;
+}
+
+.scan-btn {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.scan-btn:hover {
+  background: #0ea5e9;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #334155;
+  padding: 10px;
+}
+
+th {
+  background: #1e293b;
+  color: #38bdf8;
+}
+
+td {
+  background: #0f172a;
+  color: #f1f5f9;
+}
