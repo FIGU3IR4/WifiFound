@@ -1,36 +1,42 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Resultado da Varredura</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'scanner/style.css' %}">
-</head>
-<body>
-  <div class="container">
-    <h1>📡 Resultado da Varredura</h1>
-    <p>Rede escaneada: <strong>{{ network_scanned }}</strong></p>
+{% load static %}
 
-    {% if devices %}
-      <table>
-        <tr>
-          <th>IP</th>
-          <th>MAC</th>
-          <th>Hostname</th>
-        </tr>
-        {% for d in devices %}
-          <tr>
-            <td>{{ d.ip }}</td>
-            <td>{{ d.mac }}</td>
-            <td>{{ d.hostname }}</td>
-          </tr>
-        {% endfor %}
-      </table>
-    {% else %}
-      <p>Nenhum dispositivo encontrado.</p>
+<link rel="stylesheet" href="{% static 'scanner/style.css' %}">
+
+<div class="container">
+
+    <h1>📡 Resultado da Varredura</h1>
+    <p class="subtitle">
+        Rede escaneada: <strong>{{ network_scanned }}</strong>
+    </p>
+
+    {% if error %}
+        <div class="error-msg">
+            Erro ao escanear a rede: {{ error }}
+        </div>
     {% endif %}
 
-    <a href="/">← Voltar</a>
-  </div>
-</body>
-</html>
+    {% if devices %}
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>MAC</th>
+                    <th>Hostname</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in devices %}
+                <tr>
+                    <td>{{ d.ip }}</td>
+                    <td>{{ d.mac }}</td>
+                    <td>{{ d.hostname }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="no-devices">Nenhum dispositivo encontrado.</p>
+    {% endif %}
+
+    <a class="back-link" href="/">← Voltar</a>
+</div>

@@ -1,17 +1,11 @@
 from pathlib import Path
-import os
 
-# Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-altere-essa-chave'
-
+SECRET_KEY = 'sua-secret-key-aqui'
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
-# --- AQUI ESTÃO OS APPS INSTALADOS ---
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,11 +13,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Nosso app principal
+    
+    # seu app
     'scanner',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -35,15 +28,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 ROOT_URLCONF = 'setup.urls'
 
-
-# --- CONFIGURAÇÃO DE TEMPLATES ---
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],   # Django já procura automaticamente em scanner/templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,12 +46,9 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = 'setup.wsgi.application'
 
-
-# --- BANCO DE DADOS PADRÃO (sqlite) ---
+# Banco não será usado, mas Django exige uma configuração
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -69,11 +56,21 @@ DATABASES = {
     }
 }
 
+AUTH_PASSWORD_VALIDATORS = []
 
-# --- ARQUIVOS ESTÁTICOS (CSS, JS, imagens) ---
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'scanner' / 'static',
-]
+LANGUAGE_CODE = 'pt-br'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+TIME_ZONE = 'America/Sao_Paulo'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+
+STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = []
+
+# Pasta onde o collectstatic irá colocar arquivos (não precisa mudar)
+STATIC_ROOT = BASE_DIR / "staticfiles"

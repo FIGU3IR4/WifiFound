@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Wi-Fi Encontrado</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'scanner/style.css' %}">
+<meta charset="UTF-8">
+<title>Wi-Fi Encontrado</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'scanner/style.css' %}">
 </head>
 <body>
-  <div class="container">
-    <h1>🔍 Wi-Fi Encontrado</h1>
-    <p>Bem-vindo ao scanner de dispositivos conectados à rede.</p>
+<div class="container">
+<h1>🔍 Wi-Fi Encontrado</h1>
+<p>Bem-vindo ao scanner de dispositivos conectados à rede.</p>
 
-    <form method="get" action="/scan/">
-      <input type="text" name="network" placeholder="Ex: 192.168.0.0/24 (opcional)">
-      <br><br>
-      <button type="submit">Iniciar Varredura</button>
-    </form>
-  </div>
+
+<form method="get" action="/scan-html/">
+<input type="text" name="network" placeholder="Ex: 192.168.0.0/24 (opcional)">
+<br><br>
+<button type="submit">Iniciar Varredura</button>
+</form>
+</div>
 </body>
 </html>
